@@ -5,6 +5,7 @@ const app = express();
 const userRouter = require('./router/user.router');
 const productRouter = require('./router/product.router');
 const cartRouter = require('./router/cart.route');
+const serviceRouter = require('./router/service.router');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,6 +15,7 @@ app.use(cors());
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/cart', cartRouter);
+app.use('/services', serviceRouter);
 
 
 
