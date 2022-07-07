@@ -20,6 +20,16 @@ exports.findOneProduct = async (req, res) => {
     }
 }
 
+exports.findByCatagory = async (req, res) => {
+    try {
+        const productCatagory = await Product.find({catagory: req.params.catagory});
+        res.status(200).json(productCatagory);
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+}
+
+
 exports.uploadProduct = async (req, res) => {
     try {
         const newProduct = new Product({
