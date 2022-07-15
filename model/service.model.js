@@ -30,6 +30,10 @@ const serviceSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    icon:{
+        type: String,
+        required: true
+    },
     coverPhoto: {
         type: String,
         required: true

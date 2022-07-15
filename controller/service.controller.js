@@ -35,6 +35,8 @@ exports.uploadService = async (req, res) => {
             coverPhoto: req.body.coverPhoto,
             photoUrl1: req.body.photoUrl1,
             photoUrl2: req.body.photoUrl2,
+            icon : req.body.icon
+
         })
         await newService.save();
         res.status(200).json({ message: 'successfully created Product', newService });
