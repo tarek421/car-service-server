@@ -10,7 +10,7 @@ exports.findAllBlogs = async (req, res) => {
     }
 }
 
-exports.postBlog = () => async (req, res) => {
+exports.uploadBlog = async (req, res) => {
     try {
         const newBlog = new Blog({
             id: uuidv4(),
