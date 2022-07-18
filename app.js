@@ -7,6 +7,7 @@ const productRouter = require('./router/product.router');
 const cartRouter = require('./router/cart.route');
 const serviceRouter = require('./router/service.router');
 const rivewRouter = require('./router/rivew.route');
+const blogRouter = require('./router/blog.router');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,6 +19,7 @@ app.use('/products', productRouter);
 app.use('/cart', cartRouter);
 app.use('/services', serviceRouter);
 app.use('/rivews', rivewRouter);
+app.use('/blogs', blogRouter);
 
 
 
