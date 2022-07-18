@@ -1,6 +1,5 @@
 const { default: mongoose } = require("mongoose");
 
-
 const blogSchema = mongoose.Schema({
     id: {
         type: String,
@@ -60,4 +59,4 @@ const blogSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model("Blogs", blogSchema)
+module.exports = mongoose.model('Blog', blogSchema)

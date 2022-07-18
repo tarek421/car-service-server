@@ -1,9 +1,18 @@
 const { v4: uuidv4 } = require('uuid');
-const Blogs = require('../model/blog.modal');
+const Blog = require('../model/blog.modal');
+
+exports.findAllBlogs = async (req, res) => {
+    try {
+        const blogs = await Blog.find();
+        res.status(200).json(blogs);
+    } catch (error) {
+        res.status(200).json(error.message);
+    }
+}
 
 exports.postBlog = () => async (req, res) => {
     try {
-        const newBlog = new Blogs({
+        const newBlog = new Blog({
             id: uuidv4(),
             title: req.body.title,
             catagory: req.body.catagory,
@@ -19,7 +28,7 @@ exports.postBlog = () => async (req, res) => {
             paragraph4: req.body.paragraph4
         })
         await newBlog.save();
-        res.status(200).json({ message: 'successfully created Product', newBlog });
+        res.status(200).json({ message: 'successfully created a Blog', newBlog });
     } catch (error) {
         res.status(500).json(error.message);
     }
