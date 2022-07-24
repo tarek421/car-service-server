@@ -10,6 +10,15 @@ exports.findAllBlogs = async (req, res) => {
     }
 }
 
+exports.findSingleBlog = async (req, res) => {
+    try {
+        const blog = await Blog.find({id: req.params.id});
+        res.status(200).json(blog);
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+}
+
 exports.uploadBlog = async (req, res) => {
     try {
         const newBlog = new Blog({
@@ -29,6 +38,15 @@ exports.uploadBlog = async (req, res) => {
         })
         await newBlog.save();
         res.status(200).json({ message: 'successfully created a Blog', newBlog });
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+}
+
+exports.deleteBlog = async (req, res) => {
+    try {
+        await Blog.deleteOne({id: req.params.id});
+        res.status(200).json({message: "Blog deleted successfully"})
     } catch (error) {
         res.status(500).json(error.message);
     }
