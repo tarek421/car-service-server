@@ -20,7 +20,7 @@ exports.GetOneUser = async (req, res) => {
 }
 
 exports.CreateUser = async (req, res) => {
-
+    console.log(req.body.name, req.body.email);
     try {
         const newUser = new User({
             id: uuidv4(),
@@ -37,7 +37,7 @@ exports.CreateUser = async (req, res) => {
 
 exports.UpdateUser = async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.params.email });
+        const user = await User.findOne({ email: req.body.email });
         user.name = req.body.name;
         user.email = req.body.email;
         user.photo = req.body.photo;
