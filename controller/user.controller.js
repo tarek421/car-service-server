@@ -37,10 +37,17 @@ exports.CreateUser = async (req, res) => {
 
 exports.UpdateUser = async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
-        user.name = req.body.name;
-        user.email = req.body.email;
-        user.photo = req.body.photo;
+        const filter = {email: req.body.email}
+        const update = { 
+            id: uuidv4(),
+            name: req.body.name,
+            email: req.body.email,
+            photo: req.body.photo
+        };
+        const user = await User.findOneAndUpdate(filter, update, {
+            new: true,
+            upsert: true,
+          });
         await user.save();
         res.status(200).json(user);
     } catch (error) {
