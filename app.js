@@ -8,6 +8,7 @@ const cartRouter = require('./router/cart.route');
 const serviceRouter = require('./router/service.router');
 const rivewRouter = require('./router/rivew.route');
 const blogRouter = require('./router/blog.router');
+const adminRouter = require('./router/admin.router');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/users', userRouter);
+app.use('/admin', adminRouter);
 app.use('/products', productRouter);
 app.use('/cart', cartRouter);
 app.use('/services', serviceRouter);
