@@ -3,8 +3,8 @@ const { setAdminUser } = require('../controller/admin.controller');
 const adminRouter = express.Router();
 
 
-adminRouter.get('/', GetAllAdmin);
-adminRouter.get('/:id', GetSingleAdmin);
-adminRouter.put('/admin', setAdminUser);
+// adminRouter.get('/', GetAllAdmin);
+// adminRouter.get('/:id', GetSingleAdmin);
+adminRouter.put('/', setAdminUser);
 
 module.exports = adminRouter;
