@@ -23,3 +23,18 @@ exports.setAdminUser = async (req, res) => {
         res.status(500).json(error.message);
     }
 }
+
+
+exports.GetAdmin = async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.params.email });
+        let isAdmin = false;
+        console.log(user)
+        if (user?.role === "admin" || user?.role === "administer") {
+          isAdmin = true;
+        }
+        res.status(200).json({ admin: isAdmin });
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+}

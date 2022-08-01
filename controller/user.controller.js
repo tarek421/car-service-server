@@ -13,15 +13,13 @@ exports.GetAllUser = async (req, res) => {
 exports.GetOneUser = async (req, res) => {
     try {
         const user = await User.findOne({ id: req.params.id });
-        let isAdmin = false;
-        if (user?.role === "admin" || user?.role === "administer") {
-          isAdmin = true;
-        }
-        res.status(200).json(user, { admin: isAdmin });
+        res.status(200).json(user);
     } catch (error) {
         res.status(500).json(error.message);
     }
 }
+
+
 
 exports.CreateUser = async (req, res) => {
     try {
