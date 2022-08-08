@@ -9,6 +9,7 @@ const serviceRouter = require('./router/service.router');
 const rivewRouter = require('./router/rivew.route');
 const blogRouter = require('./router/blog.router');
 const adminRouter = require('./router/admin.router');
+const orderRouter = require('./router/order.router');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,6 +23,7 @@ app.use('/cart', cartRouter);
 app.use('/services', serviceRouter);
 app.use('/rivews', rivewRouter);
 app.use('/blogs', blogRouter);
+app.use('/orders', orderRouter);
 
 
 
