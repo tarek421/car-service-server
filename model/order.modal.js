@@ -13,6 +13,10 @@ const orderSchema = mongoose.Schema({
     type: String,
     require: true
   },
+  phone:{
+    type: String,
+    require: true
+  },
   quantity:{
     type: String,
     require: true

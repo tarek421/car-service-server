@@ -15,12 +15,14 @@ exports.findAllOrders = async (req, res) => {
 
 
 exports.postOrder = async (req, res) => {
+    console.log(req.body.order)
     try {
         const newOrder = new Order({
             id: uuidv4(),
             title: req.body.title,
             email: req.body.email,
             name: req.body.name,
+            phone: req.body.phone,
             price: Number(req.body.price),
             quantity: req.body.quantity
         })
