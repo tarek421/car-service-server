@@ -38,11 +38,11 @@ const serviceSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    photoUrl1: {
+    image1: {
         type: String,
         required: true
     },
-    photoUrl2: {
+    image2: {
         type: String,
         required: true
     },

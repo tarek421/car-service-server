@@ -29,12 +29,12 @@ exports.uploadService = async (req, res) => {
             title: req.body.title,
             catagory: req.body.catagory,
             price: Number(req.body.price),
-            header: req.body.header,
-            description1: req.body.description1,
-            description2: req.body.description2,
+            description: req.body.description,
+            paragraph1: req.body.paragraph1,
+            paragraph2: req.body.paragraph2,
             coverPhoto: req.body.coverPhoto,
-            photoUrl1: req.body.photoUrl1,
-            photoUrl2: req.body.photoUrl2,
+            image1: req.body.image1,
+            image2: req.body.image2,
             icon : req.body.icon
 
         })
