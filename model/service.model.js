@@ -18,7 +18,7 @@ const serviceSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    description1: {
+    description: {
         type: String,
         required: true
     },
