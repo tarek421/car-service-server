@@ -30,7 +30,7 @@ exports.GetAdmin = async (req, res) => {
         const user = await User.findOne({ email: req.params.email });
         let isAdmin = false;
         console.log(user)
-        if (user?.role === "admin" || user?.role === "administer") {
+        if (user.role === "admin" || user.role === "administer") {
           isAdmin = true;
         }
         res.status(200).json({ admin: isAdmin });
