@@ -45,7 +45,6 @@ exports.UpdateUser = async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             photo: req.body.photo,
-            role: req.body.role
         };
         const user = await User.findOneAndUpdate(filter, update, {
             new: true,
