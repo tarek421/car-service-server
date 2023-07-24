@@ -29,9 +29,8 @@ exports.GetAdmin = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.params.email });
         let isAdmin = false;
-        console.log(user)
         if (user.role === "admin" || user.role === "administer") {
-          isAdmin = true;
+            isAdmin = true;
         }
         res.status(200).json({ admin: isAdmin });
     } catch (error) {
