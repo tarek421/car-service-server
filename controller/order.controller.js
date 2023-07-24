@@ -26,15 +26,15 @@ exports.findAllOrders = async (req, res) => {
 }
 
 exports.postOrder = async (req, res) => {
-    console.log(req.body.order)
     try {
         const newOrder = new Order({
             id: uuidv4(),
             title: req.body.title,
-            email: req.body.email,
             name: req.body.name,
+            email: req.body.email,
+            address: req.body.address,
             phone: req.body.phone,
-            price: Number(req.body.price),
+            price: Number(req.body.totalPrice),
             quantity: req.body.quantity,
             status: req.body.status
         })
