@@ -78,11 +78,8 @@ exports.updateProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
 
     try {
-        const user = await User.findOne({ email: req.params.email });
-        if (user.role === administer || user.role === admin) {
-            await Product.deleteOne({ id: req.params.id });
-            res.status(200).json({ message: 'successfully deleted Product' });
-        }
+        await Product.deleteOne({ id: req.params.id });
+        res.status(200).json({ message: 'successfully deleted Product' });
     } catch (error) {
         res.status(500).json(error.message)
     }
