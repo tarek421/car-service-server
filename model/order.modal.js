@@ -1,35 +1,43 @@
 const { default: mongoose } = require("mongoose");
 
 const orderSchema = mongoose.Schema({
-  id:{
+  id: {
     type: String,
     require: true
   },
-  name:{
+  name: {
     type: String,
     require: true
   },
-  title:{
+  title: {
     type: String,
     require: true
   },
-  phone:{
+  phone: {
     type: String,
     require: true
   },
-  quantity:{
+  address: {
     type: String,
     require: true
   },
-  email:{
+  quantity: {
     type: String,
     require: true
   },
-  price:{
+  email: {
     type: String,
     require: true
   },
-  createdOn:{
+  price: {
+    type: String,
+    require: true
+  },
+  status: {
+    type: String,
+    require: true
+  },
+  createdOn: {
     type: Date,
     default: Date.now
   },
