@@ -35,7 +35,8 @@ exports.postOrder = async (req, res) => {
             name: req.body.name,
             phone: req.body.phone,
             price: Number(req.body.price),
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            status: req.body.status
         })
         await newOrder.save();
         res.status(200).json({ message: 'successfully Order', newOrder });
