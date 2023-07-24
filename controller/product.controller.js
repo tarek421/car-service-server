@@ -74,24 +74,11 @@ exports.updateProduct = async (req, res) => {
     }
 }
 
-exports.deleteProduct = verifyToken, async (req, res) => {
+exports.deleteProduct = async (req, res) => {
 
     try {
-        const token = req.headers.authorization;
-        const requester = req.decodedEmail;
-        if (requester) {
-            const requesterAccount = await User.findOne({
-                email: requester,
-            });
-
-            if (requesterAccount.role === 'admin' || requesterAccount.role === 'administer') {
-                const id = req.query.id;
-
-                const filter = { _id: ObjectId(id) };
-                const result = await Destination.deleteOne(filter);
-                res.json(result);
-            }
-        }
+        await Product.deleteOne({ id: req.params.id });
+        res.status(200).json({ message: 'successfully deleted Product' });
     } catch (error) {
         res.status(500).json(error.message)
     }

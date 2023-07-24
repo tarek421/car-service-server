@@ -7,7 +7,7 @@ productRouter.get('/:id', findOneProduct);
 productRouter.get('/catagories/:catagory', findByCatagory);
 productRouter.post('/', uploadProduct);
 productRouter.patch('/:id', updateProduct);
-productRouter.delete('/delete', deleteProduct);
+productRouter.delete('/:id', deleteProduct);
 
 
 module.exports = productRouter; 
