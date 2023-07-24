@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const Product = require('../model/product.modal');
+const User = require('../model/user.model');
 
 const verifyToken = async (req, res, next) => {
     if (req.headers?.authorization?.startsWith("Bearer ")) {
@@ -77,8 +78,11 @@ exports.updateProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
 
     try {
-        await Product.deleteOne({ id: req.params.id });
-        res.status(200).json({ message: 'successfully deleted Product' });
+        const user = await User.findOne({ email: req.params.email });
+        if (user.role === administer || user.role === admin) {
+            await Product.deleteOne({ id: req.params.id });
+            res.status(200).json({ message: 'successfully deleted Product' });
+        }
     } catch (error) {
         res.status(500).json(error.message)
     }
