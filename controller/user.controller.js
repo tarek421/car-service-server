@@ -27,7 +27,8 @@ exports.CreateUser = async (req, res) => {
             id: uuidv4(),
             name: req.body.name,
             email: req.body.email,
-            photo: req.body.photo
+            photo: req.body.photo,
+            role: req.body.role
         });
         await newUser.save();
         res.status(200).json({ message: 'successfully created user', newUser });
@@ -43,7 +44,8 @@ exports.UpdateUser = async (req, res) => {
             id: uuidv4(),
             name: req.body.name,
             email: req.body.email,
-            photo: req.body.photo
+            photo: req.body.photo,
+            role: req.body.role
         };
         const user = await User.findOneAndUpdate(filter, update, {
             new: true,
