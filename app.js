@@ -17,7 +17,11 @@ const orderRouter = require('./router/order.router');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:3000", "https://car-service-20.vercel.app", "https://car-service-20.netlify.app/"],
+    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
+    credentials: true
+}));
 
 app.use('/users', userRouter);
 app.use('/admin', adminRouter);
