@@ -1,26 +1,26 @@
 const { default: mongoose } = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  id:{
+  id: {
     type: String,
     require: true
   },
-  name:{
+  name: {
     type: String,
     require: true
   },
-  email:{
+  email: {
     type: String,
     require: true
   },
-  photo:{
+  photo: {
     type: String,
     require: true
   },
-  role:{
+  role: {
     type: String,
   },
-  createdOn:{
+  createdOn: {
     type: Date,
     default: Date.now
   },

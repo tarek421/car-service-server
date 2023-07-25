@@ -41,7 +41,6 @@ exports.UpdateUser = async (req, res) => {
     try {
         const filter = { email: req.body.email }
         const update = {
-            id: uuidv4(),
             name: req.body.name,
             email: req.body.email,
             photo: req.body.photo,
@@ -56,12 +55,6 @@ exports.UpdateUser = async (req, res) => {
         res.status(500).json(error.message);
     }
 }
-
-
-
-
-
-
 
 exports.DeleteUser = async (req, res) => {
     try {

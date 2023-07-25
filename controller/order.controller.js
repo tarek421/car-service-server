@@ -1,18 +1,8 @@
 const { v4: uuidv4 } = require('uuid');
 const Order = require('../model/order.modal');
 const User = require('../model/user.model');
+const ObjectId = require('mongodb').ObjectID;
 
-
-const verifyToken = async (req, res, next) => {
-    if (req.headers?.authorization?.startsWith("Bearer ")) {
-        const token = req.headers.authorization.split(" ")[1];
-        try {
-            const decodedUser = await admin.auth().verifyIdToken(token);
-            req.decodedEmail = decodedUser.email;
-        } catch { }
-    }
-    next();
-};
 
 exports.findAllOrders = async (req, res) => {
     try {
@@ -44,12 +34,12 @@ exports.postOrder = async (req, res) => {
 }
 
 
-exports.orderStatus = verifyToken, async (req, res) => {
+exports.orderStatus = async (req, res) => {
     try {
-        const requester = req.decodedEmail;
-        if (requester) {
+        const requesterEmail = req.decodedEmail;
+        if (requesterEmail) {
             const requesterAccount = await User.findOne({
-                email: requester,
+                email: requesterEmail,
             });
             if (requesterAccount.role === 'admin' || requesterAccount.role === 'administer') {
                 const { id, value } = req.body;
@@ -59,6 +49,7 @@ exports.orderStatus = verifyToken, async (req, res) => {
                 res.json(result);
             }
         }
+
     } catch (error) {
         res.status(500).json(error.message)
     }
