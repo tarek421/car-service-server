@@ -17,24 +17,7 @@ const orderRouter = require('./router/order.router');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors({
-    origin: ["http://localhost:3000", "https://car-service-20.vercel.app", "https://car-service-20.netlify.app/"],
-    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-    credentials: true
-}));
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Methods",
-        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-    );
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(200);
-    }
-    next();
-});
+app.use(cors());
 
 app.use('/users', userRouter);
 app.use('/admin', adminRouter);
